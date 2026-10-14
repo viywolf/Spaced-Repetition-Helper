@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bs2ugakst02nb"]
+
+[node name="MainScreen" type="Control" unique_id=339445641]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=248870627]
+custom_minimum_size = Vector2(1920, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer" unique_id=1025452121]
+layout_mode = 2
+current_tab = 0
+
+[node name="MainSelector" type="VBoxContainer" parent="HBoxContainer/TabContainer" unique_id=699732768]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Section1" type="HBoxContainer" parent="HBoxContainer/TabContainer/MainSelector" unique_id=1660894200]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/TabContainer/MainSelector/Section1" unique_id=735387540]
+layout_mode = 2
+text = "Add new section"
+
+[node name="Section2" type="HBoxContainer" parent="HBoxContainer/TabContainer/MainSelector" unique_id=1099115200]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/TabContainer/MainSelector/Section2" unique_id=1109175091]
+layout_mode = 2
+text = "Add new section"
+
+[node name="Button2" type="Button" parent="HBoxContainer/TabContainer/MainSelector/Section2" unique_id=1044597544]
+layout_mode = 2
+text = "Edit"
+
+[node name="Settings" type="VBoxContainer" parent="HBoxContainer/TabContainer" unique_id=1372341393]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/TabContainer/Settings" unique_id=2101992656]
+layout_mode = 2
+text = "Placeholder"
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1834887302]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlashcardContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1561580294]
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/FlashcardContainer" unique_id=1162614359]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "Placeholder text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/FlashcardContainer" unique_id=1709139309]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "Type here"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/FlashcardContainer" unique_id=518868540]
+layout_mode = 2
+
+[node name="LeftArrowButton" type="Button" parent="HBoxContainer/FlashcardContainer/HBoxContainer" unique_id=1485618557]
+layout_mode = 2
+text = "<"
+
+[node name="Spacer" type="Control" parent="HBoxContainer/FlashcardContainer/HBoxContainer" unique_id=1296318633]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightArrowButton" type="Button" parent="HBoxContainer/FlashcardContainer/HBoxContainer" unique_id=1246226754]
+layout_mode = 2
+text = ">"
