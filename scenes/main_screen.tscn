@@ -1,83 +1,157 @@
 [gd_scene format=3 uid="uid://bs2ugakst02nb"]
 
+[ext_resource type="Script" uid="uid://5xca126s1wya" path="res://scripts/flashcard_manager.gd" id="1_7fvvs"]
+[ext_resource type="Script" uid="uid://dedbl14ruchug" path="res://scenes/selector_manager.gd" id="1_kusfh"]
+
 [node name="MainScreen" type="Control" unique_id=339445641]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=248870627]
-custom_minimum_size = Vector2(1920, 0)
+[node name="MainSection" type="HSplitContainer" parent="." unique_id=1356632912]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 2144.0
+offset_bottom = 1080.0
+split_offsets = PackedInt32Array(200)
+split_offset = 200
 
-[node name="TabContainer" type="TabContainer" parent="HBoxContainer" unique_id=1025452121]
+[node name="Management" type="TabContainer" parent="MainSection" unique_id=1025452121]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 current_tab = 0
 
-[node name="MainSelector" type="VBoxContainer" parent="HBoxContainer/TabContainer" unique_id=699732768]
+[node name="Selector" type="VBoxContainer" parent="MainSection/Management" unique_id=699732768]
 layout_mode = 2
+script = ExtResource("1_kusfh")
 metadata/_tab_index = 0
 
-[node name="Section1" type="HBoxContainer" parent="HBoxContainer/TabContainer/MainSelector" unique_id=1660894200]
+[node name="Section1" type="HBoxContainer" parent="MainSection/Management/Selector" unique_id=1660894200]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer/TabContainer/MainSelector/Section1" unique_id=735387540]
-layout_mode = 2
-text = "Add new section"
-
-[node name="Section2" type="HBoxContainer" parent="HBoxContainer/TabContainer/MainSelector" unique_id=1099115200]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="HBoxContainer/TabContainer/MainSelector/Section2" unique_id=1109175091]
+[node name="Button" type="Button" parent="MainSection/Management/Selector/Section1" unique_id=735387540]
 layout_mode = 2
 text = "Add new section"
 
-[node name="Button2" type="Button" parent="HBoxContainer/TabContainer/MainSelector/Section2" unique_id=1044597544]
+[node name="Label" type="RichTextLabel" parent="MainSection/Management/Selector" unique_id=1916375249]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "-Blah blah blah blah blah blah blah section-"
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Section2" type="HBoxContainer" parent="MainSection/Management/Selector" unique_id=1099115200]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainSection/Management/Selector/Section2" unique_id=1216725916]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Add new section"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="MainSection/Management/Selector/Section2" unique_id=1044597544]
 layout_mode = 2
 text = "Edit"
 
-[node name="Settings" type="VBoxContainer" parent="HBoxContainer/TabContainer" unique_id=1372341393]
+[node name="Settings" type="VBoxContainer" parent="MainSection/Management" unique_id=1372341393]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/TabContainer/Settings" unique_id=2101992656]
+[node name="Label" type="Label" parent="MainSection/Management/Settings" unique_id=2101992656]
 layout_mode = 2
 text = "Placeholder"
 
-[node name="Control" type="Control" parent="HBoxContainer" unique_id=1834887302]
+[node name="FlashcardManager" type="VBoxContainer" parent="MainSection" unique_id=1561580294]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("1_7fvvs")
 
-[node name="FlashcardContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1561580294]
-custom_minimum_size = Vector2(960, 0)
+[node name="TitleText" type="RichTextLabel" parent="MainSection/FlashcardManager" unique_id=1162614359]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/FlashcardContainer" unique_id=1162614359]
-custom_minimum_size = Vector2(500, 100)
-layout_mode = 2
-text = "Placeholder text"
+theme_override_font_sizes/normal_font_size = 50
+text = "Daily Revision"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="HBoxContainer/FlashcardContainer" unique_id=1709139309]
+[node name="QuestionText" type="RichTextLabel" parent="MainSection/FlashcardManager" unique_id=852625173]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-placeholder_text = "Type here"
+text = "What is the powerhouse of the cell?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/FlashcardContainer" unique_id=518868540]
+[node name="TextInputContainer" type="HBoxContainer" parent="MainSection/FlashcardManager" unique_id=1066765333]
 layout_mode = 2
 
-[node name="LeftArrowButton" type="Button" parent="HBoxContainer/FlashcardContainer/HBoxContainer" unique_id=1485618557]
-layout_mode = 2
-text = "<"
-
-[node name="Spacer" type="Control" parent="HBoxContainer/FlashcardContainer/HBoxContainer" unique_id=1296318633]
+[node name="Spacer" type="Control" parent="MainSection/FlashcardManager/TextInputContainer" unique_id=458814048]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RightArrowButton" type="Button" parent="HBoxContainer/FlashcardContainer/HBoxContainer" unique_id=1246226754]
+[node name="TextEdit" type="TextEdit" parent="MainSection/FlashcardManager/TextInputContainer" unique_id=1709139309]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+placeholder_text = "Type here"
+
+[node name="Spacer2" type="Control" parent="MainSection/FlashcardManager/TextInputContainer" unique_id=408392474]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubmitButton" type="HBoxContainer" parent="MainSection/FlashcardManager" unique_id=219678823]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="MainSection/FlashcardManager/SubmitButton" unique_id=182325722]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RevealButton" type="Button" parent="MainSection/FlashcardManager/SubmitButton" unique_id=1649859217]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Reveal Answer"
+
+[node name="Spacer2" type="Control" parent="MainSection/FlashcardManager/SubmitButton" unique_id=734344682]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="MainSection/FlashcardManager" unique_id=257535471]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ArrowContainer" type="HBoxContainer" parent="MainSection/FlashcardManager" unique_id=518868540]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+
+[node name="Spacer1" type="Control" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=987637135]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeftArrowButton" type="Button" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=1485618557]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "<"
+
+[node name="AnswerText" type="RichTextLabel" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=680768261]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Blah blah anwer here"
+
+[node name="RightArrowButton" type="Button" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=1246226754]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = ">"
+
+[node name="Spacer3" type="Control" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=1195006882]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer2" type="Control" parent="MainSection/FlashcardManager" unique_id=1175364302]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="MainSection/FlashcardManager/SubmitButton/RevealButton" to="MainSection/FlashcardManager" method="_on_reveal_button_pressed"]

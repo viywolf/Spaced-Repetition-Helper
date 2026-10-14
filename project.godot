@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Spaced Repetition Helper"
+run/main_scene="uid://bs2ugakst02nb"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Flashcards="*uid://b2tax3ynhsv7m"
 
 [display]
 
