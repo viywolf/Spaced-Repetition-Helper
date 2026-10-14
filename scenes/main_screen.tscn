@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://5xca126s1wya" path="res://scripts/flashcard_manager.gd" id="1_7fvvs"]
 [ext_resource type="Script" uid="uid://dedbl14ruchug" path="res://scenes/selector_manager.gd" id="1_kusfh"]
+[ext_resource type="Script" uid="uid://hl45omvsv3tm" path="res://scripts/main_section.gd" id="1_lushf"]
+[ext_resource type="Script" uid="uid://cdn3le7hqbp7n" path="res://scripts/editor_manager.gd" id="3_aum10"]
 
 [node name="MainScreen" type="Control" unique_id=339445641]
 layout_mode = 3
@@ -12,10 +14,12 @@ offset_bottom = 1080.0
 [node name="MainSection" type="HSplitContainer" parent="." unique_id=1356632912]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
-offset_right = 2144.0
+offset_right = 1920.0
 offset_bottom = 1080.0
 split_offsets = PackedInt32Array(200)
+touch_dragger_enabled = true
 split_offset = 200
+script = ExtResource("1_lushf")
 
 [node name="Management" type="TabContainer" parent="MainSection" unique_id=1025452121]
 custom_minimum_size = Vector2(200, 0)
@@ -64,6 +68,7 @@ layout_mode = 2
 text = "Placeholder"
 
 [node name="FlashcardManager" type="VBoxContainer" parent="MainSection" unique_id=1561580294]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_7fvvs")
@@ -153,5 +158,65 @@ size_flags_horizontal = 3
 [node name="Spacer2" type="Control" parent="MainSection/FlashcardManager" unique_id=1175364302]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="EditorManager" type="VBoxContainer" parent="MainSection" unique_id=1902498502]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+script = ExtResource("3_aum10")
+
+[node name="SetLabel" type="RichTextLabel" parent="MainSection/EditorManager" unique_id=410335020]
+custom_minimum_size = Vector2(0, 100)
+custom_maximum_size = Vector2(800, -1)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Daily Revision Set"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainSection/EditorManager" unique_id=542369342]
+custom_minimum_size = Vector2(0, 900)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainSection/EditorManager/ScrollContainer" unique_id=1619798835]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer" unique_id=391108744]
+layout_mode = 2
+text = "Section 0: Revise now"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer" unique_id=1029069751]
+layout_mode = 2
+columns = 4
+
+[node name="Panel" type="Panel" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer/GridContainer" unique_id=428848229]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer/GridContainer" unique_id=2007937336]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer/GridContainer" unique_id=1812648504]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Panel4" type="Panel" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer/GridContainer" unique_id=1109761678]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Panel5" type="Panel" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer/GridContainer" unique_id=1787999722]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Panel6" type="Panel" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer/GridContainer" unique_id=2062618672]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="Panel7" type="Panel" parent="MainSection/EditorManager/ScrollContainer/VBoxContainer/GridContainer" unique_id=2008146086]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
 
 [connection signal="pressed" from="MainSection/FlashcardManager/SubmitButton/RevealButton" to="MainSection/FlashcardManager" method="_on_reveal_button_pressed"]
