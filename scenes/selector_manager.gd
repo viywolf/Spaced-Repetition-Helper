@@ -1,9 +1,11 @@
 extends VBoxContainer
 
+@onready var flashcard_select = preload("res://scenes/flashcard_selector.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	create_set_label("Hello world")
+	pass
+	#create_set_label("Hello world")
 
 
 func create_section_label(message: String) -> void:
@@ -12,17 +14,6 @@ func create_section_label(message: String) -> void:
 	add_child(section_label)
 	
 func create_set_label(label_text: String) -> void:
-	var hbox := HBoxContainer.new()
-	
-	var set_label := Label.new()
-	set_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	set_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	set_label.text = label_text
-	
-	var edit_button := Button.new()
-	edit_button.text = "Edit"
-	
-	hbox.add_child(set_label)
-	hbox.add_child(edit_button)
-	
-	self.add_child(hbox)
+	var new_flashcard_select = flashcard_select.instantiate()
+	new_flashcard_select.displayed_text = label_text	
+	self.add_child(new_flashcard_select)

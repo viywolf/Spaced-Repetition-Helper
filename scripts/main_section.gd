@@ -9,3 +9,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func show_flashcard_manager() -> void:
+	$FlashcardManager.show()
+	$EditorManager.hide()
+	
+func show_editor_manager() -> void:
+	$FlashcardManager.hide()
+	$EditorManager.show()
