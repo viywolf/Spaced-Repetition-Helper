@@ -74,7 +74,6 @@ layout_mode = 2
 text = "Revision stats"
 
 [node name="FlashcardManager" type="VBoxContainer" parent="MainSection" unique_id=1561580294]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_7fvvs")
@@ -141,7 +140,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LeftArrowButton" type="Button" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=1485618557]
+[node name="IncorrectButton" type="Button" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=1485618557]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Incorrect"
@@ -152,7 +151,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Blah blah anwer here"
 
-[node name="RightArrowButton" type="Button" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=1246226754]
+[node name="CorrectButton" type="Button" parent="MainSection/FlashcardManager/ArrowContainer" unique_id=1246226754]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Correct"
@@ -226,6 +225,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="CardEditor" type="VBoxContainer" parent="MainSection" unique_id=838655222]
+visible = false
 layout_mode = 2
 
 [node name="CardEditTitle" type="RichTextLabel" parent="MainSection/CardEditor" unique_id=1896947897]
@@ -316,3 +316,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="pressed" from="MainSection/FlashcardManager/SubmitButton/RevealButton" to="MainSection/FlashcardManager" method="_on_reveal_button_pressed"]
+[connection signal="pressed" from="MainSection/FlashcardManager/ArrowContainer/IncorrectButton" to="MainSection/FlashcardManager" method="_on_incorrect_button_pressed"]
+[connection signal="pressed" from="MainSection/FlashcardManager/ArrowContainer/CorrectButton" to="MainSection/FlashcardManager" method="_on_correct_button_pressed"]

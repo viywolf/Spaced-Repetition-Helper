@@ -17,3 +17,6 @@ func show_flashcard_manager() -> void:
 func show_editor_manager() -> void:
 	$FlashcardManager.hide()
 	$EditorManager.show()
+
+func show_card_editor() -> void:
+	pass
