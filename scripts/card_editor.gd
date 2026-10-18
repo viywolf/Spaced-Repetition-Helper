@@ -13,6 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_flashcard_new:
 		update_info()
+		is_flashcard_new = false
 
 func update_info() -> void:
 	currrent_flashcard = Flashcards.flashcards["Demo Flashcard"][current_flashcard_id]
@@ -20,3 +21,15 @@ func update_info() -> void:
 	$CardEditHBoxContainer/VBoxContainer/QuestionTextEdit.text = currrent_flashcard[Flashcards.QUESTION]
 	$CardEditHBoxContainer/VBoxContainer/AnswerTextEdit.text = currrent_flashcard[Flashcards.ANSWER]
 	$CardEditHBoxContainer/VBoxContainer/Label.text = "Current status: Stage " + currrent_flashcard[Flashcards.STAGE]
+
+
+func _on_save_button_question_pressed() -> void:
+	currrent_flashcard[Flashcards.QUESTION] = $CardEditHBoxContainer/VBoxContainer/QuestionTextEdit.text
+
+
+func _on_save_button_answer_pressed() -> void:
+	currrent_flashcard[Flashcards.ANSWER] = $CardEditHBoxContainer/VBoxContainer/AnswerTextEdit.text
+
+
+func _on_save_button_stage_pressed() -> void:
+	currrent_flashcard[Flashcards.STAGE] = str($CardEditHBoxContainer/VBoxContainer/OptionButton.selected)

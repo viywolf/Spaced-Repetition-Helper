@@ -34,15 +34,16 @@ func _on_reveal_button_pressed() -> void:
 		$ArrowContainer/CorrectButton.show()
 
 
-func get_new_card() -> void:
+func get_new_card() -> int:
 	for i in range(Flashcards.flashcards[current_flashcard_set].size()):
 		var card = Flashcards.flashcards[current_flashcard_set][i]
 		if card[Flashcards.STAGE] == "0":
 			current_flashcard = card
 			cur_question_index = i
-			return
+			return i
 	# If it reaches here no card was found
 	cur_question_index = -1
+	return -1
 	
 
 func _on_correct_button_pressed() -> void:

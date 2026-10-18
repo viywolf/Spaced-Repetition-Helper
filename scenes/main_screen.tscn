@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dedbl14ruchug" path="res://scenes/selector_manager.gd" id="1_kusfh"]
 [ext_resource type="Script" uid="uid://hl45omvsv3tm" path="res://scripts/main_section.gd" id="1_lushf"]
 [ext_resource type="Script" uid="uid://cdn3le7hqbp7n" path="res://scripts/editor_manager.gd" id="3_aum10"]
+[ext_resource type="Script" uid="uid://b4skmqfigxyov" path="res://scripts/new_card_editor.gd" id="6_23dc1"]
 [ext_resource type="Script" uid="uid://db8m3cwdl0nhh" path="res://scripts/card_editor.gd" id="6_a46j4"]
 
 [node name="MainScreen" type="Control" unique_id=339445641]
@@ -31,7 +32,7 @@ current_tab = 0
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Label" type="Button" parent="MainSection/Management/Control" unique_id=595796603]
+[node name="StartRevisionButton" type="Button" parent="MainSection/Management/Control" unique_id=595796603]
 layout_mode = 2
 text = "Start Today's Revision"
 
@@ -222,6 +223,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
 [node name="CardEditor" type="VBoxContainer" parent="MainSection" unique_id=838655222]
+visible = false
 layout_mode = 2
 script = ExtResource("6_a46j4")
 
@@ -260,7 +262,7 @@ wrap_mode = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1478890965]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer" unique_id=1391410976]
+[node name="SaveButtonQuestion" type="Button" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer" unique_id=1391410976]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Save"
@@ -281,7 +283,7 @@ wrap_mode = 1
 [node name="HBoxContainer2" type="HBoxContainer" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1467970610]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1028392380]
+[node name="SaveButtonAnswer" type="Button" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1028392380]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Save"
@@ -306,7 +308,7 @@ popup/item_1/id = 1
 [node name="HBoxContainer3" type="HBoxContainer" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1108072163]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer3" unique_id=460512501]
+[node name="SaveButtonStage" type="Button" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer3" unique_id=460512501]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Save"
@@ -315,7 +317,89 @@ text = "Save"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="NewCardEditor" type="VBoxContainer" parent="MainSection" unique_id=799594590]
+layout_mode = 2
+script = ExtResource("6_23dc1")
+
+[node name="CardEditTitle" type="RichTextLabel" parent="MainSection/NewCardEditor" unique_id=329784543]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Adding new flashcard"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="CardEditHBoxContainer" type="HBoxContainer" parent="MainSection/NewCardEditor" unique_id=418636759]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MainSection/NewCardEditor/CardEditHBoxContainer" unique_id=515580051]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainSection/NewCardEditor/CardEditHBoxContainer" unique_id=204680753]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1485134470]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1951816667]
+layout_mode = 2
+text = "Question"
+
+[node name="QuestionTextEdit" type="TextEdit" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1232290208]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "Write the flashcard question/prompt here"
+wrap_mode = 1
+
+[node name="Spacer" type="Control" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1593244260]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1847910775]
+layout_mode = 2
+text = "Answer"
+
+[node name="AnswerTextEdit" type="TextEdit" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1439411436]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+placeholder_text = "Write the intended answer here"
+wrap_mode = 1
+
+[node name="Spacer2" type="Control" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=338022700]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="AddNewCardButton" type="Button" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1968439862]
+layout_mode = 2
+text = "Add"
+
+[node name="ErrorLabel" type="Label" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1614973055]
+visible = false
+layout_mode = 2
+text = "Make sure all fields have a value!"
+horizontal_alignment = 1
+
+[node name="SavedLabel" type="Label" parent="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=2112721716]
+visible = false
+layout_mode = 2
+text = "Flashcard successfully saved!"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="MainSection/NewCardEditor/CardEditHBoxContainer" unique_id=1316300542]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="MainSection/Management/Control/StartRevisionButton" to="MainSection" method="_on_start_revision_button_pressed"]
 [connection signal="edit_menu_pressed" from="MainSection/Management/Control/ScrollContainer/Selector" to="MainSection" method="_on_selector_edit_menu_pressed"]
 [connection signal="pressed" from="MainSection/FlashcardManager/SubmitButton/RevealButton" to="MainSection/FlashcardManager" method="_on_reveal_button_pressed"]
 [connection signal="pressed" from="MainSection/FlashcardManager/ArrowContainer/IncorrectButton" to="MainSection/FlashcardManager" method="_on_incorrect_button_pressed"]
 [connection signal="pressed" from="MainSection/FlashcardManager/ArrowContainer/CorrectButton" to="MainSection/FlashcardManager" method="_on_correct_button_pressed"]
+[connection signal="pressed" from="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer/SaveButtonQuestion" to="MainSection/CardEditor" method="_on_save_button_question_pressed"]
+[connection signal="pressed" from="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer2/SaveButtonAnswer" to="MainSection/CardEditor" method="_on_save_button_answer_pressed"]
+[connection signal="pressed" from="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer3/SaveButtonStage" to="MainSection/CardEditor" method="_on_save_button_stage_pressed"]
+[connection signal="text_changed" from="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer/QuestionTextEdit" to="MainSection/NewCardEditor" method="_on_question_text_edit_text_changed"]
+[connection signal="text_changed" from="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer/AnswerTextEdit" to="MainSection/NewCardEditor" method="_on_answer_text_edit_text_changed"]
+[connection signal="pressed" from="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer/AddNewCardButton" to="MainSection/NewCardEditor" method="_on_add_new_card_button_pressed"]
