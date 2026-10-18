@@ -18,5 +18,5 @@ func show_editor_manager() -> void:
 	$FlashcardManager.hide()
 	$EditorManager.show()
 
-func show_card_editor() -> void:
+func show_card_editor(edit_no: int) -> void:
 	pass

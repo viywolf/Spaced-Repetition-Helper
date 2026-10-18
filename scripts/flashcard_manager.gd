@@ -20,7 +20,7 @@ func update_flashcard(question_index: int):
 		%QuestionText.text = "All flashcards complete!"
 		%AnswerText.text = "You have completed all flashcards"
 		return
-	current_flashcard = Flashcards.demo_flashcards[current_flashcard_set][question_index]
+	current_flashcard = Flashcards.flashcards[current_flashcard_set][question_index]
 	
 	%AnswerText.visible_characters = 0
 	%TitleText.text = current_flashcard_set
@@ -35,8 +35,8 @@ func _on_reveal_button_pressed() -> void:
 
 
 func get_new_card() -> void:
-	for i in range(Flashcards.demo_flashcards[current_flashcard_set].size()):
-		var card = Flashcards.demo_flashcards[current_flashcard_set][i]
+	for i in range(Flashcards.flashcards[current_flashcard_set].size()):
+		var card = Flashcards.flashcards[current_flashcard_set][i]
 		if card[Flashcards.STAGE] == "0":
 			current_flashcard = card
 			cur_question_index = i
