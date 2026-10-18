@@ -38,6 +38,7 @@ func _on_selector_edit_menu_pressed(id: int) -> void:
 func _on_start_revision_button_pressed() -> void:
 	show_flashcard_manager()
 	$FlashcardManager.update_flashcard($FlashcardManager.get_new_card())
+	$Management/Control/Label.text = "Day: " + str(int(Settings.cur_time))
 
 
 func _on_new_card_editor_new_flashcard_made() -> void:
@@ -52,3 +53,5 @@ func _on_advance_time_button_pressed() -> void:
 	Settings.cur_time += 1
 	Flashcards.advance_time()
 	$Management/Control/Label.text = "Day: " + str(int(Settings.cur_time))
+	if Flashcards.does_flashcard_need_revision():
+		$Management/Control/Label.text = $Management/Control/Label.text + " | Revise now!"

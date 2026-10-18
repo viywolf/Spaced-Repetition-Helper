@@ -31,13 +31,22 @@ func add_flashcard(question: String, answer: String) -> void:
 func advance_time() -> void:
 	for arr in flashcards["Demo Flashcard"]:
 		arr[TIME_LEFT] = float(arr[TIME_LEFT]) - 1
+		arr[TIME_LEFT] = max(0, arr[TIME_LEFT])
 		if is_zero_approx(float(arr[TIME_LEFT])):
 			arr[IS_READY_TO_REVIEW] = true
+			"""
 			if arr[STAGE] == "0":
 				pass
 			else:
 				set_stage(int(arr[STAGE]) + 1, int(arr[ID]))
+				"""
 				
 func set_stage(stage_no: int, flashcard_id: int):
 	flashcards["Demo Flashcard"][flashcard_id][STAGE] = str(stage_no)
 	flashcards["Demo Flashcard"][flashcard_id][TIME_LEFT] = str(STAGE_TO_TIME_LEFT[stage_no])
+
+func does_flashcard_need_revision() -> bool:
+	for arr in flashcards["Demo Flashcard"]:
+		if arr[IS_READY_TO_REVIEW] == true:
+			return true
+	return false

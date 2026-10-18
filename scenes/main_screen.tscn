@@ -35,7 +35,7 @@ metadata/_tab_index = 0
 
 [node name="Label" type="Label" parent="MainSection/Management/Control" unique_id=1964409573]
 layout_mode = 2
-text = "Day: 0"
+text = "Day: 0 | Revise now!"
 
 [node name="StartRevisionButton" type="Button" parent="MainSection/Management/Control" unique_id=595796603]
 layout_mode = 2
@@ -305,11 +305,19 @@ horizontal_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=284201107]
 layout_mode = 2
-item_count = 2
+item_count = 6
 popup/item_0/text = "Stage 0"
 popup/item_0/id = 0
 popup/item_1/text = "Stage 1"
 popup/item_1/id = 1
+popup/item_2/text = "Stage 2"
+popup/item_2/id = 2
+popup/item_3/text = "Stage 3"
+popup/item_3/id = 3
+popup/item_4/text = "Stage 4"
+popup/item_4/id = 4
+popup/item_5/text = "Stage 5"
+popup/item_5/id = 5
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer" unique_id=1108072163]
 layout_mode = 2
@@ -430,6 +438,8 @@ horizontal_alignment = 1
 [connection signal="pressed" from="MainSection/Management/Control/AddNewCardButton" to="MainSection" method="_on_add_new_card_button_pressed"]
 [connection signal="pressed" from="MainSection/Management/Control/AdvanceTimeButton" to="MainSection" method="_on_advance_time_button_pressed"]
 [connection signal="edit_menu_pressed" from="MainSection/Management/Control/ScrollContainer/Selector" to="MainSection" method="_on_selector_edit_menu_pressed"]
+[connection signal="focus_entered" from="MainSection/FlashcardManager/TextInputContainer/TextEdit" to="MainSection/FlashcardManager" method="_on_text_edit_focus_entered"]
+[connection signal="focus_exited" from="MainSection/FlashcardManager/TextInputContainer/TextEdit" to="MainSection/FlashcardManager" method="_on_text_edit_focus_exited"]
 [connection signal="pressed" from="MainSection/FlashcardManager/SubmitButton/RevealButton" to="MainSection/FlashcardManager" method="_on_reveal_button_pressed"]
 [connection signal="pressed" from="MainSection/FlashcardManager/ArrowContainer/IncorrectButton" to="MainSection/FlashcardManager" method="_on_incorrect_button_pressed"]
 [connection signal="pressed" from="MainSection/FlashcardManager/ArrowContainer/CorrectButton" to="MainSection/FlashcardManager" method="_on_correct_button_pressed"]

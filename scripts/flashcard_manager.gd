@@ -4,10 +4,19 @@ var current_flashcard_set: String = "Demo Flashcard"
 var current_flashcard: Array
 var cur_question_index: int
 
+var is_focus_on_text_edit: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_new_card()
 	update_flashcard(cur_question_index)
+
+func _input(event: InputEvent) -> void:
+	if is_focus_on_text_edit == false:
+		if event.is_action_pressed("left"):
+			_on_incorrect_button_pressed()
+		if event.is_action_pressed("right"):
+			_on_correct_button_pressed()
 
 
 func update_flashcard(question_index: int):
@@ -23,6 +32,7 @@ func update_flashcard(question_index: int):
 	current_flashcard = Flashcards.flashcards[current_flashcard_set][question_index]
 	
 	%AnswerText.visible_characters = 0
+	$TextInputContainer/TextEdit.text = ""
 	%TitleText.text = current_flashcard_set
 	%QuestionText.text = current_flashcard[Flashcards.QUESTION]
 	%AnswerText.text = current_flashcard[Flashcards.ANSWER]
@@ -57,3 +67,11 @@ func _on_incorrect_button_pressed() -> void:
 	Flashcards.set_stage(0, int(current_flashcard[Flashcards.ID]))
 	get_new_card()
 	update_flashcard(cur_question_index)
+
+
+func _on_text_edit_focus_entered() -> void:
+	is_focus_on_text_edit = true
+
+
+func _on_text_edit_focus_exited() -> void:
+	is_focus_on_text_edit = false

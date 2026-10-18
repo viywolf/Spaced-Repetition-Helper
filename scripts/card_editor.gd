@@ -4,13 +4,8 @@ extends VBoxContainer
 var is_flashcard_new: bool = false
 var currrent_flashcard
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_flashcard_new:
 		update_info()
 		is_flashcard_new = false
@@ -32,4 +27,5 @@ func _on_save_button_answer_pressed() -> void:
 
 
 func _on_save_button_stage_pressed() -> void:
-	currrent_flashcard[Flashcards.STAGE] = str($CardEditHBoxContainer/VBoxContainer/OptionButton.selected)
+	Flashcards.set_stage($CardEditHBoxContainer/VBoxContainer/OptionButton.selected, current_flashcard_id)
+	$CardEditHBoxContainer/VBoxContainer/Label.text = "Current status: Stage " + currrent_flashcard[Flashcards.STAGE]
