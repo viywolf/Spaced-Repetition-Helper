@@ -27,14 +27,27 @@ script = ExtResource("1_lushf")
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 current_tab = 0
+tab_1/disabled = true
 
 [node name="Control" type="VBoxContainer" parent="MainSection/Management" unique_id=868369933]
 layout_mode = 2
 metadata/_tab_index = 0
 
+[node name="Label" type="Label" parent="MainSection/Management/Control" unique_id=1964409573]
+layout_mode = 2
+text = "Day: 0"
+
 [node name="StartRevisionButton" type="Button" parent="MainSection/Management/Control" unique_id=595796603]
 layout_mode = 2
 text = "Start Today's Revision"
+
+[node name="AddNewCardButton" type="Button" parent="MainSection/Management/Control" unique_id=735387540]
+layout_mode = 2
+text = "Add new card"
+
+[node name="AdvanceTimeButton" type="Button" parent="MainSection/Management/Control" unique_id=1715239710]
+layout_mode = 2
+text = "Advance Time"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MainSection/Management/Control" unique_id=148761687]
 custom_minimum_size = Vector2(0, 1000)
@@ -45,13 +58,6 @@ custom_maximum_size = Vector2(1080, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_kusfh")
-
-[node name="Section1" type="HBoxContainer" parent="MainSection/Management/Control/ScrollContainer/Selector" unique_id=1660894200]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="MainSection/Management/Control/ScrollContainer/Selector/Section1" unique_id=735387540]
-layout_mode = 2
-text = "Add new card"
 
 [node name="Settings" type="VBoxContainer" parent="MainSection/Management" unique_id=1372341393]
 visible = false
@@ -318,6 +324,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="NewCardEditor" type="VBoxContainer" parent="MainSection" unique_id=799594590]
+visible = false
 layout_mode = 2
 script = ExtResource("6_23dc1")
 
@@ -392,7 +399,36 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="WelcomeScreen" type="VBoxContainer" parent="MainSection" unique_id=980328601]
+layout_mode = 2
+
+[node name="TitleLabel" type="RichTextLabel" parent="MainSection/WelcomeScreen" unique_id=76399282]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Space Repetition Helper"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ExplanationParagraph" type="RichTextLabel" parent="MainSection/WelcomeScreen" unique_id=1602137913]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Quick start:
+Press \"Start Today's Revision\" to cycle through all the cards that are due to be revised today. Getting a question correct will move it to the next stage, while getting one wrong will reset it to stage 0.
+
+Add a new flashcard by pressing on the \"Add New Card\" button.
+
+Edit a flashcard by pressing the edit button next to the card. Make sure to save your edits before exiting.
+
+
+What is spaced repetition?
+Spaced repetition repeats information, spaced tightly at first, and spaced longer later as you memorise the question. The ratio used for this project is 1-3-7-14-30-60. Currently, this project does not work on real time, but you can press a button to advance time by 'one'."
+fit_content = true
+horizontal_alignment = 1
+
 [connection signal="pressed" from="MainSection/Management/Control/StartRevisionButton" to="MainSection" method="_on_start_revision_button_pressed"]
+[connection signal="pressed" from="MainSection/Management/Control/AddNewCardButton" to="MainSection" method="_on_add_new_card_button_pressed"]
+[connection signal="pressed" from="MainSection/Management/Control/AdvanceTimeButton" to="MainSection" method="_on_advance_time_button_pressed"]
 [connection signal="edit_menu_pressed" from="MainSection/Management/Control/ScrollContainer/Selector" to="MainSection" method="_on_selector_edit_menu_pressed"]
 [connection signal="pressed" from="MainSection/FlashcardManager/SubmitButton/RevealButton" to="MainSection/FlashcardManager" method="_on_reveal_button_pressed"]
 [connection signal="pressed" from="MainSection/FlashcardManager/ArrowContainer/IncorrectButton" to="MainSection/FlashcardManager" method="_on_incorrect_button_pressed"]
@@ -400,6 +436,7 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer/SaveButtonQuestion" to="MainSection/CardEditor" method="_on_save_button_question_pressed"]
 [connection signal="pressed" from="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer2/SaveButtonAnswer" to="MainSection/CardEditor" method="_on_save_button_answer_pressed"]
 [connection signal="pressed" from="MainSection/CardEditor/CardEditHBoxContainer/VBoxContainer/HBoxContainer3/SaveButtonStage" to="MainSection/CardEditor" method="_on_save_button_stage_pressed"]
+[connection signal="new_flashcard_made" from="MainSection/NewCardEditor" to="MainSection" method="_on_new_card_editor_new_flashcard_made"]
 [connection signal="text_changed" from="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer/QuestionTextEdit" to="MainSection/NewCardEditor" method="_on_question_text_edit_text_changed"]
 [connection signal="text_changed" from="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer/AnswerTextEdit" to="MainSection/NewCardEditor" method="_on_answer_text_edit_text_changed"]
 [connection signal="pressed" from="MainSection/NewCardEditor/CardEditHBoxContainer/VBoxContainer/AddNewCardButton" to="MainSection/NewCardEditor" method="_on_add_new_card_button_pressed"]

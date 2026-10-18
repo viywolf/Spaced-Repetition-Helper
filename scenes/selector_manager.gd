@@ -7,8 +7,6 @@ signal edit_menu_pressed(id: int)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_flashcards()
-	#create_set_label("Hello world")
-
 
 func create_section_label(message: String) -> void:
 	var section_label := RichTextLabel.new()
@@ -22,7 +20,12 @@ func create_flashcard_select(label_text: String, id: int) -> void:
 	new_flashcard_select.edit_button_pressed.connect(open_edit_menu.bind(new_flashcard_select.flashcard_id))
 	self.add_child(new_flashcard_select)
 
+func remove_all_labels() -> void:
+	for child in self.get_children():
+		child.queue_free()
+
 func add_flashcards() -> void:
+	remove_all_labels()
 	for key in Flashcards.flashcards:
 		for flashcard: Array in Flashcards.flashcards[key]:
 			create_flashcard_select(flashcard[Flashcards.QUESTION], int(flashcard[Flashcards.ID]))

@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal new_flashcard_made
+
 @onready var question_text_edit = $CardEditHBoxContainer/VBoxContainer/QuestionTextEdit
 @onready var answer_text_edit = $CardEditHBoxContainer/VBoxContainer/AnswerTextEdit
 
@@ -10,6 +12,7 @@ func _on_add_new_card_button_pressed() -> void:
 	if (question_text_edit.text != "" and
 			 answer_text_edit.text != ""):
 		Flashcards.add_flashcard(question_text_edit.text, answer_text_edit.text)
+		new_flashcard_made.emit()
 		error_label.hide()
 		saved_label.show()
 	else:

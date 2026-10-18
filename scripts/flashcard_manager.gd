@@ -37,7 +37,7 @@ func _on_reveal_button_pressed() -> void:
 func get_new_card() -> int:
 	for i in range(Flashcards.flashcards[current_flashcard_set].size()):
 		var card = Flashcards.flashcards[current_flashcard_set][i]
-		if card[Flashcards.STAGE] == "0":
+		if card[Flashcards.IS_READY_TO_REVIEW] == true:
 			current_flashcard = card
 			cur_question_index = i
 			return i
@@ -47,12 +47,13 @@ func get_new_card() -> int:
 	
 
 func _on_correct_button_pressed() -> void:
-	current_flashcard[Flashcards.STAGE] = str(int(current_flashcard[Flashcards.STAGE]) + 1)
+	current_flashcard[Flashcards.IS_READY_TO_REVIEW] = false
+	Flashcards.set_stage(int(current_flashcard[Flashcards.STAGE]) + 1, int(current_flashcard[Flashcards.ID]))
 	get_new_card()
 	update_flashcard(cur_question_index)
 
 
 func _on_incorrect_button_pressed() -> void:
-	current_flashcard[Flashcards.STAGE] = "0"
+	Flashcards.set_stage(0, int(current_flashcard[Flashcards.ID]))
 	get_new_card()
 	update_flashcard(cur_question_index)
