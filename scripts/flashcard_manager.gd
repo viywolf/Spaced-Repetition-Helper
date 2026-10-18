@@ -25,6 +25,7 @@ func update_flashcard(question_index: int):
 	# No flashcard
 	if question_index == -1:
 		%AnswerText.visible_characters = 0
+		$ArrowContainer/VBoxContainer/CorrectOrNotLabel.visible_characters = 0
 		%TitleText.text = current_flashcard_set
 		%QuestionText.text = "All flashcards complete!"
 		%AnswerText.text = "You have completed all flashcards"
@@ -32,6 +33,7 @@ func update_flashcard(question_index: int):
 	current_flashcard = Flashcards.flashcards[current_flashcard_set][question_index]
 	
 	%AnswerText.visible_characters = 0
+	$ArrowContainer/VBoxContainer/CorrectOrNotLabel.visible_characters = 0
 	$TextInputContainer/TextEdit.text = ""
 	%TitleText.text = current_flashcard_set
 	%QuestionText.text = current_flashcard[Flashcards.QUESTION]
@@ -40,6 +42,7 @@ func update_flashcard(question_index: int):
 func _on_reveal_button_pressed() -> void:
 	%AnswerText.visible_characters = -1
 	if cur_question_index != -1:
+		$ArrowContainer/VBoxContainer/CorrectOrNotLabel.visible_characters = -1
 		$ArrowContainer/IncorrectButton.show()
 		$ArrowContainer/CorrectButton.show()
 
